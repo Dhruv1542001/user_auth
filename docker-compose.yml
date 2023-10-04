@@ -1,0 +1,18 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: your-backend-app
+    ports:
+      - '6000:6000'
+    environment:
+      NODE_ENV: development
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:latest
+    container_name: your-mongo-container
+    ports:
+      - '27019:27017'
